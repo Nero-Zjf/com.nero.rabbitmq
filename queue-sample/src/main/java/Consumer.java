@@ -22,13 +22,15 @@ public class Consumer {
         QueueingConsumer consumer = new QueueingConsumer(channel);
 
         // 监听队列
-        channel.basicConsume(QUEUE_NAME, true, consumer);
+        //channel.basicConsume(QUEUE_NAME, true, consumer);
+        channel.basicConsume(QUEUE_NAME, false, consumer);
 
         // 获取消息
         while (true) {
             QueueingConsumer.Delivery delivery = consumer.nextDelivery();
             String message = new String(delivery.getBody());
-            System.out.println(" [x] Received '" + message + "'");
+            System.out.println(" [x] Received '" + message + "'" + delivery.getEnvelope().getDeliveryTag());
+            channel.basicAck(delivery.getEnvelope().getDeliveryTag(), false);
         }
     }
 }

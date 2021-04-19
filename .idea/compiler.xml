@@ -7,10 +7,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="direct-sample" />
-        <module name="queue-sample" />
-        <module name="work-sample" />
         <module name="fanout-sample" />
+        <module name="queue-sample" />
         <module name="topic-sample" />
+        <module name="work-sample" />
       </profile>
     </annotationProcessing>
   </component>

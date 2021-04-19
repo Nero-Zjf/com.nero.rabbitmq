@@ -18,9 +18,12 @@ public class Producer {
         channel.queueDeclare(QUEUE_NAME, false, false, false, null);
 
         // 消息内容
-        String message = "Hello World!";
-        channel.basicPublish("", QUEUE_NAME, null, message.getBytes());//不需要使用交换机，直接将消息发送到指定队列
-        System.out.println(" [x] Sent '" + message + "'");
+        String message1 = "Hello World1!";
+        String message2 = "Hello World2!";
+        channel.basicPublish("", QUEUE_NAME, null, message1.getBytes());//不需要使用交换机，直接将消息发送到指定队列
+        channel.basicPublish("", QUEUE_NAME, null, message2.getBytes());//不需要使用交换机，直接将消息发送到指定队列
+        System.out.println(" [x] Sent '" + message1 + "'");
+        System.out.println(" [x] Sent '" + message2 + "'");
         //关闭通道和连接
         channel.close();
         connection.close();
